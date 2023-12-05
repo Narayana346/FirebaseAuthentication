@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
@@ -33,10 +32,9 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
         viewModel = ViewModelProvider(this,LoginViewModelFactory(UserAuthService()))[LoginViewModel::class.java]
 
-        binding.logBtn.setOnClickListener {
-            val email = binding.logEmail.text.toString()
-            val password = binding.logPass.text.toString()
-            binding.logProgressBar.visibility = View.GONE
+        binding.btnSignIn.setOnClickListener {
+            val email = binding.etSinInEmail.text.toString()
+            val password = binding.etSinInPassword.text.toString()
             if(!isEmpty(email,password)){
                 viewModel.login(User(email,password))
                 viewModel.userLoginStatus.observe(this){
@@ -52,8 +50,11 @@ class Login : AppCompatActivity() {
             }
 
         }
-        binding.resBtn.setOnClickListener {
+        binding.tvRegister.setOnClickListener {
             startActivity(Intent(this, Resister::class.java))
+        }
+        binding.tvForgotPassword.setOnClickListener{
+            startActivity(Intent(this, ForgetPassword::class.java))
         }
     }
 

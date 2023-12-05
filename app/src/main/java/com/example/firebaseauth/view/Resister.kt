@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
@@ -18,19 +17,18 @@ import com.example.firebaseauth.viewModel.ResisterViewModelFactory
 class Resister : AppCompatActivity() {
     private lateinit var binding: ActivityResisterBinding
     private lateinit var viewModel: ResisterViewModel
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this,ResisterViewModelFactory(UserAuthService()))[ResisterViewModel::class.java]
         // onclick resister
-        binding.resBtn.setOnClickListener {
-            binding.resProgressBar.visibility = View.GONE
-            val email = binding.resEmail.text.toString()
-            val password = binding.resPass.text.toString()
+        binding.btnSignUp.setOnClickListener {
+            val name = binding.etSinUpName.toString()
+            val email = binding.etSinUpEmail.text.toString()
+            val password = binding.etSinUpPassword.text.toString()
             if (!isEmpty(email,password)){
-                viewModel.register(User(email,password))
+                viewModel.register(User(name,email))
                 viewModel.resisterStatus.observe(this){
                     if(it.status) {
                         Toast.makeText(this, it.message, LENGTH_SHORT).show()
@@ -43,7 +41,7 @@ class Resister : AppCompatActivity() {
         }
 
         // move to login Activity
-        binding.logBtn.setOnClickListener{ startActivity(Intent(this, Login::class.java)) }
+        binding.tvLoginPage.setOnClickListener{ startActivity(Intent(this, Login::class.java)) }
     }
 
     // check email and password is empty or not

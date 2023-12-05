@@ -23,8 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         //check user login or not
         val user = viewModel.userAuthService.getUserInfo()
-        if (user != null){
-           binding.message.text = user.email
+        if (user != null){ binding.message.text = user.email
         }else{ startActivity(Intent(this, Login::class.java))}
 
         //onclick logout

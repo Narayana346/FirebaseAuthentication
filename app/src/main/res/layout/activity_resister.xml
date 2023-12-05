@@ -1,82 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Base.Theme.FirebaseAuth."
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Resister">
-  <LinearLayout
+    >
+
+  <ImageView
+      android:id="@+id/ivSinUpLogo"
+      android:layout_width="350dp"
+      android:layout_height="280dp"
+      android:contentDescription="@string/image"
+      android:src="@drawable/sin_up_icon"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.491"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/tvSinUp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="232dp"
+      android:text="@string/sign_up"
+      android:textColor="@color/black"
+      android:textSize="36sp"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/tilName"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:layout_marginHorizontal="48dp"
+      android:layout_marginStart="@dimen/start_end_margin"
+      android:layout_marginEnd="@dimen/start_end_margin"
+      android:layout_marginTop="10dp"
+      app:boxStrokeWidth="2dp"
+      app:boxCornerRadiusBottomEnd="@dimen/til_radius"
+      app:boxCornerRadiusBottomStart="@dimen/til_radius"
+      app:boxCornerRadiusTopEnd="@dimen/til_radius"
+      app:boxCornerRadiusTopStart="@dimen/til_radius"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/ivSinUpLogo"
+      >
+
+    <EditText
+        android:id="@+id/etSinUpName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/name"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColorHint="#78909C"
+        android:textSize="@dimen/et_text_size"
+        tools:ignore="VisualLintTextFieldSize" />
+  </com.google.android.material.textfield.TextInputLayout>
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/tilEmail"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/start_end_margin"
+      android:layout_marginEnd="@dimen/start_end_margin"
+      android:layout_marginTop="10dp"
+      app:boxStrokeWidth="2dp"
+      app:boxCornerRadiusBottomEnd="@dimen/til_radius"
+      app:boxCornerRadiusBottomStart="@dimen/til_radius"
+      app:boxCornerRadiusTopEnd="@dimen/til_radius"
+      app:boxCornerRadiusTopStart="@dimen/til_radius"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tilName">
+
+    <EditText
+        android:id="@+id/etSinUpEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/email_id"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColorHint="#78909C"
+        android:textSize="@dimen/et_text_size"
+        tools:ignore="VisualLintTextFieldSize" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/tilPassword"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/start_end_margin"
+      android:layout_marginEnd="@dimen/start_end_margin"
+      android:layout_marginTop="10dp"
+      app:boxStrokeWidth="2dp"
+      app:passwordToggleEnabled="true"
+      app:boxCornerRadiusBottomEnd="@dimen/til_radius"
+      app:boxCornerRadiusBottomStart="@dimen/til_radius"
+      app:boxCornerRadiusTopEnd="@dimen/til_radius"
+      app:boxCornerRadiusTopStart="@dimen/til_radius"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tilEmail">
+
+    <EditText
+        android:id="@+id/etSinUpPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textSize="@dimen/et_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btnSignUp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="40dp"
+      android:layout_marginTop="20dp"
+      android:background="@drawable/button_bg"
+      android:paddingHorizontal="20dp"
+      android:paddingVertical="5dp"
+      android:text="@string/register"
+      android:textColor="@color/white"
+      android:textSize="26sp"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tilPassword" />
+
+  <LinearLayout
+      android:id="@+id/linearLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="horizontal"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
-
+      app:layout_constraintTop_toBottomOf="@id/btnSignUp"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintVertical_bias="0.264">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
+        android:id="@+id/tvNewHere"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:textAlignment="center"
-        android:textSize="48sp"
-        android:text="@string/resister" />
+        android:text="@string/joined_us_before"
+        android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/res_Email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:hint="@string/hint_email"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:textColorHint="#8D6E63"
-        android:autofillHints=""
-        tools:ignore="VisualLintTextFieldSize" />
-
-    <EditText
-        android:id="@+id/res_pass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:hint="@string/hint_pass"
-        android:inputType="numberPassword"
-        android:minHeight="48dp"
-        android:textColorHint="#8D6E63"
-        android:autofillHints=""
-        tools:ignore="VisualLintTextFieldSize" />
-
-
-    <ProgressBar
-        android:id="@+id/res_progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/res_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/resister"
-        android:layout_marginHorizontal="48dp"
-        tools:ignore="DuplicateSpeakableTextCheck,VisualLintButtonSize" />
-    <Button
-        android:id="@+id/log_btn"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvLoginPage"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login"
-        android:layout_marginHorizontal="48dp"
-        tools:ignore="DuplicateSpeakableTextCheck,VisualLintButtonSize" />
-
+        android:textColor="@color/blue_5"
+        android:textSize="18sp"
+        android:textStyle="bold" />
   </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

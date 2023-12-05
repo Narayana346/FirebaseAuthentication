@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+
 class UserAuthService {
     private val auth:FirebaseAuth = Firebase.auth
     // user login method
@@ -40,5 +41,14 @@ class UserAuthService {
 //    userInfo method
     fun getUserInfo(): FirebaseUser? {
         return auth.currentUser
+    }
+    fun forgetPassword(email:String,listener: (AuthListener) -> Unit){
+        auth.sendPasswordResetEmail(email).addOnCompleteListener{
+            if(it.isSuccessful){
+                listener(AuthListener(true,"Please check your Email"))
+            }else{
+                listener(AuthListener(false,"try Again"))
+            }
+        }
     }
 }
