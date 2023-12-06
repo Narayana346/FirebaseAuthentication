@@ -20,11 +20,16 @@ class ForgetPassword : AppCompatActivity() {
         setContentView(binding.root)
         viewModel = ViewModelProvider(this,ForgetPasswordViewModelFactory(UserAuthService()))[ForgetPasswordViewModel::class.java]
         binding.btnForgotPasswordSubmit.setOnClickListener {
-            val email = binding.etForgotPasswordEmail.toString()
+            val email = binding.etForgotPasswordEmail.text.toString()
             if(email != null){
                 viewModel.reset(email)
                 viewModel.emailSendStatus.observe(this){
-                    Toast.makeText(this,it.message,LENGTH_SHORT).show()
+                    if(it.status){
+                        Toast.makeText(this,it.message,LENGTH_SHORT).show()
+                        startActivity(Intent(this,Login::class.java))
+                    }else{
+                        Toast.makeText(this,it.message, LENGTH_SHORT).show()
+                    }
                 }
             }else{
                 Toast.makeText(this,"Enter email", LENGTH_SHORT).show()

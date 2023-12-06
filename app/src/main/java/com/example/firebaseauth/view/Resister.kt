@@ -28,7 +28,7 @@ class Resister : AppCompatActivity() {
             val email = binding.etSinUpEmail.text.toString()
             val password = binding.etSinUpPassword.text.toString()
             if (!isEmpty(email,password)){
-                viewModel.register(User(name,email))
+                viewModel.register(User(email,password))
                 viewModel.resisterStatus.observe(this){
                     if(it.status) {
                         Toast.makeText(this, it.message, LENGTH_SHORT).show()

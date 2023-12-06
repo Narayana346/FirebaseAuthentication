@@ -3,12 +3,14 @@ package com.example.firebaseauth.model
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 
 class UserAuthService {
     private val auth:FirebaseAuth = Firebase.auth
-    // user login method
+    private val database:DatabaseReference = Firebase.database.reference
     fun userLogin(user: User, listener: (AuthListener)-> Unit) {
         auth.signInWithEmailAndPassword(user.email, user.password)
             .addOnCompleteListener {
@@ -51,4 +53,23 @@ class UserAuthService {
             }
         }
     }
+    fun writeNewUser(userId: String, name: String, email: String,listener: (AuthListener) -> Unit){
+        val user = UserInfo(name, email)
+
+        database.child("users").child(userId).setValue(user)
+            .addOnSuccessListener{
+                listener(AuthListener(true,"store information successfully"))
+            }.addOnFailureListener{
+                listener(AuthListener(false,"Failed"))
+            }
+        }
+    fun getUserData(userId:String,listener: (AuthListener) -> Unit){
+        database.child("users").child(userId).get().addOnSuccessListener {
+            listener(AuthListener(true,"successfully"))
+        }.addOnFailureListener{
+            listener(AuthListener(false,"Failed"))
+        }
+    }
 }
+
+

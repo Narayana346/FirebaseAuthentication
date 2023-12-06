@@ -16,4 +16,5 @@ class ResisterViewModel(private var userAuthService: UserAuthService) :ViewModel
             resisterStatus_.value = it
         }
     }
+    fun storeData()
 }
