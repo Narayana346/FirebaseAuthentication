@@ -53,9 +53,7 @@ class UserAuthService {
             }
         }
     }
-    fun writeNewUser(userId: String, name: String, email: String,listener: (AuthListener) -> Unit){
-        val user = UserInfo(name, email)
-
+    fun writeNewUser(userId: String,user:User,listener: (AuthListener) -> Unit){
         database.child("users").child(userId).setValue(user)
             .addOnSuccessListener{
                 listener(AuthListener(true,"store information successfully"))

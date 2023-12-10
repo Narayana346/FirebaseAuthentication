@@ -36,7 +36,7 @@ class Login : AppCompatActivity() {
             val email = binding.etSinInEmail.text.toString()
             val password = binding.etSinInPassword.text.toString()
             if(!isEmpty(email,password)){
-                viewModel.login(User(email,password))
+                viewModel.login(User(email= email, password = password))
                 viewModel.userLoginStatus.observe(this){
                     if(it.status) {
                         Toast.makeText(this, it.message, LENGTH_SHORT).show()

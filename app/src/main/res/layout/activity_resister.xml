@@ -120,7 +120,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintTextFieldSize" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <androidx.appcompat.widget.AppCompatButton
@@ -138,7 +139,8 @@
       android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/tilPassword" />
+      app:layout_constraintTop_toBottomOf="@id/tilPassword"
+      tools:ignore="VisualLintButtonSize" />
 
   <LinearLayout
       android:id="@+id/linearLayout"

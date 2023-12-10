@@ -24,13 +24,23 @@ class Resister : AppCompatActivity() {
         viewModel = ViewModelProvider(this,ResisterViewModelFactory(UserAuthService()))[ResisterViewModel::class.java]
         // onclick resister
         binding.btnSignUp.setOnClickListener {
-            val name = binding.etSinUpName.toString()
+            val name = binding.etSinUpName.text.toString()
             val email = binding.etSinUpEmail.text.toString()
             val password = binding.etSinUpPassword.text.toString()
             if (!isEmpty(email,password)){
-                viewModel.register(User(email,password))
+                viewModel.register(User(name,email,password))
                 viewModel.resisterStatus.observe(this){
                     if(it.status) {
+
+                        // store user data
+                        viewModel.storeData(User(name,email,password))
+                        viewModel.storeDataStatus.observe(this){
+                            if (it.status){
+                                Toast.makeText(this,it.message, LENGTH_SHORT).show()
+                            }else{
+                                Toast.makeText(this,it.message, LENGTH_SHORT).show()
+                            }
+                        }
                         Toast.makeText(this, it.message, LENGTH_SHORT).show()
                         startActivity(Intent(this, MainActivity::class.java))
                     }else{

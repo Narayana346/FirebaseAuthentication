@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "978423846300",
-    "project_id": "fir-auth-b4e3e",
-    "storage_bucket": "fir-auth-b4e3e.appspot.com"
+    "project_number": "765479112818",
+    "firebase_url": "https://fir-auth-ddb8b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "fir-auth-ddb8b",
+    "storage_bucket": "fir-auth-ddb8b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:978423846300:android:329f0f16d843aef1a76459",
+        "mobilesdk_app_id": "1:765479112818:android:6122475dd4f9e4881232eb",
         "android_client_info": {
           "package_name": "com.example.firebaseauth"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDLkUljRx5bnYLSDJrmqTb2Vlzip9oq6Fg"
+          "current_key": "AIzaSyCJffC6elHyWLr1ozMgbvBv-gy6_bITFmg"
         }
       ],
       "services": {
