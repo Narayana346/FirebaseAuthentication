@@ -29,8 +29,8 @@ class Resister : AppCompatActivity() {
             val password = binding.etSinUpPassword.text.toString()
             if (!isEmpty(email,password)){
                 viewModel.register(User(name,email,password))
-                viewModel.resisterStatus.observe(this){
-                    if(it.status) {
+                viewModel.resisterStatus.observe(this){ authListener ->
+                    if(authListener.status) {
 
                         // store user data
                         viewModel.storeData(User(name,email,password))
@@ -41,10 +41,10 @@ class Resister : AppCompatActivity() {
                                 Toast.makeText(this,it.message, LENGTH_SHORT).show()
                             }
                         }
-                        Toast.makeText(this, it.message, LENGTH_SHORT).show()
+                        Toast.makeText(this, authListener.message, LENGTH_SHORT).show()
                         startActivity(Intent(this, MainActivity::class.java))
                     }else{
-                        Toast.makeText(this,it.message, LENGTH_SHORT).show()
+                        Toast.makeText(this,authListener.message, LENGTH_SHORT).show()
                     }
                 }
             }

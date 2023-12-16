@@ -1,8 +1,10 @@
 package com.example.firebaseauth.model
 
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -61,8 +63,8 @@ class UserAuthService {
                 listener(AuthListener(false,"Failed"))
             }
         }
-    fun getUserData(userId:String,listener: (AuthListener) -> Unit){
-        database.child("users").child(userId).get().addOnSuccessListener {
+    fun getUserData(userId:String,listener: (AuthListener) -> Unit) {
+    database.child("users").child(userId).get().addOnSuccessListener {
             listener(AuthListener(true,"successfully"))
         }.addOnFailureListener{
             listener(AuthListener(false,"Failed"))

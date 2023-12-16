@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.ui.AddNote">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_marginTop="12dp"
+        android:layout_height="420dp">
+
+
+
+        <EditText
+            android:id="@+id/et_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/title"
+            android:inputType="textPersonName"
+            android:minHeight="58dp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_note"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autofillHints=""
+            android:minHeight="300dp"
+            android:ems="10"
+            android:gravity="start"
+            android:hint="@string/start_typing"
+            android:inputType="textMultiLine"
+            android:lineSpacingMultiplier="1.2"
+            android:text=""
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/btnSave"
+            app:layout_constraintEnd_toEndOf="@+id/et_title"
+            app:layout_constraintStart_toStartOf="@+id/et_title"
+            app:layout_constraintTop_toBottomOf="@+id/et_title" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="100dp"
+            android:background="@drawable/button_bg"
+            android:paddingHorizontal="20dp"
+            android:text="save"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintButtonSize" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>
