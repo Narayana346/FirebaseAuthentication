@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home2"
-        android:name="com.example.firebaseauth.view.ui.Home"
+        android:name="com.example.fundoonotes.notes.view.fragment.Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNote"
-        android:name="com.example.firebaseauth.view.ui.AddNote"
+        android:name="com.example.fundoonotes.notes.view.fragment.AddNote"
         android:label="fragment_add_note"
         tools:layout="@layout/fragment_add_note" >
         <action
@@ -25,9 +25,9 @@
     </fragment>
     <fragment
         android:id="@+id/notes2"
-        android:name="com.example.firebaseauth.view.ui.Notes"
+        android:name="com.example.fundoonotes.notes.view.fragment.DeletedNotes"
         android:label="fragment_notes"
-        tools:layout="@layout/fragment_notes" >
+        tools:layout="@layout/fragment_deleted_notes" >
         <action
             android:id="@+id/action_notes2_to_home2"
             app:destination="@id/home2" />
